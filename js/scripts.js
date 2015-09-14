@@ -33,7 +33,6 @@ $(document).ready(function() {
 
 
 
-
      //add to ul
      $("#contacts").append("<li><span class='clickedContact'>" + newContact.fullname + "</span></li>");
 
@@ -48,8 +47,14 @@ $(document).ready(function() {
 
       $(".clickedContact").last().click(function() {
         $("#contact").show();
+        $("#contact h4").text(newContact.fullname);
+        newContact.addresses.forEach(function(addr) {
+          $("#contact-address").append(
+               "<li>" + addr.street + ", " + addr.city + ", " + addr.state + "</li>");
+        });
 
       });
+
 
 
   });  //end form submit
