@@ -1,0 +1,13 @@
+#contact {
+  display: none;
+}
+
+.clickedContact {
+  cursor: pointer;
+
+}
+
+.clickedContact:hover {
+  text-decoration: underline;
+  color: #009933;
+}

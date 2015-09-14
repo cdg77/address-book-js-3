@@ -2,28 +2,61 @@
 <html>
   <head>
     <title>Address Book</title>
+      <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" type="text/css" href="css/styles.css">
+      <script src="js/jquery-1.11.3.js"></script>
+      <script src="js/scripts.js"></script>
   </head>
-  <body>
-    <h1>My Address Book</h1>
-    <h2>Contacts</h2>
-    <ul>
-      <li><span class = "contacts"></span></li>
-    </ul>
 
-    <form class = "newContact">
-      <h3>Add a new contact: </h3>
-      <label for="firstName"></label>
-      <input name="firstName" value="">
-      <label for="lastName"></label>
-      <input name="lastName" value="">
-      <label for="street"></label>
-      <input name="street" value="">
-      <label for="city"></label>
-      <input name="city" value="">
-      <label for="state"></label>
-      <input name="state" value="">
-      <button name="addAddress">Add another address</button>
-      <button name="addNewContact">Add Contact</button>
-    </form>
+  <body>
+    <div class="container">
+      <h1>My Address Book</h1>
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <h4>Contacts</h4>
+          <ul id="contacts">
+
+          </ul>
+
+          <form id="new-contact">
+            <h5>Add a new contact: </h5>
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name:</label>
+              <input class="form-control" name="firstName" id="input-first-name" type="text">
+              <label class="form-label" for="lastName">Last Name:</label>
+              <input class="form-control"name="lastName" id="input-last-name" value="">
+          </div>
+
+          <div id="addresses">
+            <div class="form-group address-group">
+              <label class="form-label" for="street">Street:</label>
+              <input class="form-control input-street" name="street" value="">
+              <label class="form-label" for="city">City:</label>
+              <input class="form-control input-city" name="city" value="">
+              <label class="form-label" for="state">State:</label>
+              <input class="form-control input-state" name="state" value="">
+            </div>
+          </div>
+
+            <button class="btn" id="add-address" name="addAddress">Add another address</button>
+            <br>  <br>  <br>  <br>
+            <button class="btn btn-primary" type="submit" name="add-contact">Add Contact</button>
+          </form>
+      </div>
+
+      <div class="col-md-6">
+          <div id="contact">
+            <h4>Name: <span id="fullName"></span></h4>
+            <ul>
+              <li> <span class="address"></span> </li>
+            </ul>
+          </div>
+      </div>
+
+
+    </div>
+  </div>
   </body>
 </html>
