@@ -46,6 +46,11 @@ $(document).ready(function() {
       $("#add-address").trigger("click");
 
 
+      $(".clickedContact").last().click(function() {
+        $("#contact").show();
+
+      });
+
 
   });  //end form submit
 
@@ -63,10 +68,7 @@ $(document).ready(function() {
 
     });
 
-    // debugger;
-  $(".clickedContact").last().click(function() {
-    $("#contact").show();
 
-  });
+
 
 });
