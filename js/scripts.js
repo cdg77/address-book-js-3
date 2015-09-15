@@ -5,7 +5,7 @@ function Contact(firstName, lastName) {
 }
 
 Contact.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
+  return (this.firstName + " " + this.lastName);
 }
 
 function Address(street, city, state) {
@@ -18,7 +18,30 @@ Address.prototype.fullAddress = function() {
   return this.street + ", " + this.city + ", " + this.state;
 }
 
+function resetFields() {
+  $("#input-first-name").val("");
+  $("#input-last-name").val("");
+  $(".input-state").val("");
+  $(".input-city").val("");
+  $(".input-street").val("");
+  $("#add-address-form").hide();
+  // $("#add-address").trigger("click");
+
+}
+
 $(document).ready(function() {
+  $("#add-address").click(function() {
+    $("#addresses").append(
+      '<div class="form-group address-group" id = "add-address-form">'
+      + '<label class="form-label" for="street">Street:</label>'
+      + '<input class="form-control input-street" name="street" value="">'
+      + '<label class="form-label" for="city">City:</label>'
+      + '<input class="form-control input-city" name="city" value="">'
+      + '<label class="form-label" for="state">State:</label>'
+      + '<input class="form-control input-state" name="state" value="">'
+      +'</div>');
+
+    });
 
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
@@ -32,26 +55,15 @@ $(document).ready(function() {
       var newStreet = $(this).find(".input-street").val();
       var newCity = $(this).find(".input-city").val();
       var newState = $(this).find(".input-state").val();
-        newContact.addresses.push({
-        street: newStreet,
-        city: newCity,
-        state: newState
-      });
+      var newAddress = new Address(newStreet, newCity, newState);
+
+      newContact.addresses.push(newAddress.fullAddress);
     });
 
-
-
-
      //add to ul
-     $("#contacts").append("<li><span class='clickedContact'>" + newContact.fullName + "</span></li>");
+     $("#contacts").append("<li><span class='clickedContact'>" + newContact.fullName() + "</span></li>");
 
 
-
-      //clear fields
-      $("#input-first-name").val("");
-      $("#input-last-name").val("");
-      $("#addresses").empty();
-      $("#add-address").trigger("click");
 
 
       $(".clickedContact").last().click(function() {
@@ -64,23 +76,12 @@ $(document).ready(function() {
 
       });
 
+      //clear fields
+        resetFields();
 
 
   });  //end form submit
 
-  $("#add-address").click(function AddAddressGroup(event) {
-    event.preventDefault();
-    $("#addresses").append(
-      '<div class="form-group address-group">'
-      + '<label class="form-label" for="street">Street:</label>'
-      + '<input class="form-control input-street" name="street" value="">'
-      + '<label class="form-label" for="city">City:</label>'
-      + '<input class="form-control input-city" name="city" value="">'
-      + '<label class="form-label" for="state">State:</label>'
-      + '<input class="form-control input-state" name="state" value="">'
-      +'</div>');
-
-    });
 
 
 
