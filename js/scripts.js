@@ -1,22 +1,24 @@
+function Contact(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.addresses = [];
+}
+
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+}
+
+
+
+
 $(document).ready(function() {
-  var addressBook = function(firstName, lastName) {
-
-    var contact = {
-      firstName: firstName,
-      lastName: lastName,
-      addresses: [],
-      fullname: firstName + " " + lastName
-    };
-
-    return contact;
-  };
 
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
 
     var inputFirst = $("#input-first-name").val();
     var inputLast = $("#input-last-name").val();
-    var newContact = new addressBook(inputFirst, inputLast);
+    var newContact = new Contact(inputFirst, inputLast);
 
     //add each address to array
     $(".address-group").each(function(){
