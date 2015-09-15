@@ -8,8 +8,15 @@ Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
 
+function Address(street, city, state) {
+  this.street = street;
+  this.city = city;
+  this.state = state;
+}
 
-
+Address.prototype.fullAddress = function() {
+  return this.street + ", " + this.city + ", " + this.state;
+}
 
 $(document).ready(function() {
 
@@ -36,7 +43,7 @@ $(document).ready(function() {
 
 
      //add to ul
-     $("#contacts").append("<li><span class='clickedContact'>" + newContact.fullname + "</span></li>");
+     $("#contacts").append("<li><span class='clickedContact'>" + newContact.fullName + "</span></li>");
 
 
 
